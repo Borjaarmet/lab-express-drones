@@ -1,33 +1,27 @@
 // Iteration #1
-const { Mongoose } = require("mongoose");
+const mongoose = require("mongoose");
 const Drone = require("../models/Drone.model");
 
-const drones = [{
-        name: "one",
-        propeller: 2,
-        maxSpeed: 100
+mongoose
+  .connect('mongodb://localhost/express-drones-dev', {
+    useCreateIndex: true,
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  })
 
-    },
-    {
-        name: "two",
-        propeller: 8,
-        maxSpeed: 400
-
-    },
-    {
-        name: "three",
-        propeller: 4,
-        maxSpeed: 240
-
-
-    }
-];
+  const drones = [
+    { name: 'Creeper XL 500', propellers: 3, maxSpeed: 12 },
+    { name: 'Racer 57', propellers: 4, maxSpeed: 20 },
+    { name: 'Courier 3000i', propellers: 6, maxSpeed: 18 }
+  ];
 
 Drone.create(drones)
-    .then(() => {
-        console.log('drones created: ', { drones })
-        Mongoose.connection.close();
+    .then(dronesFromDB => {
+        console.log(`drones created: ${ dronesFromDB.length }`)
+        mongoose.connection.close();
     })
-    .catch((error) => {
+    .catch(error => {
         console.log('an error ocurred while searching from DB', error)
-    })
+    });
+
+    module.exports = Drone;

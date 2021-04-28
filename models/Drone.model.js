@@ -2,17 +2,14 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 const droneSchema = new Schema({
-    name: String,
-    propellers: Number,
-    maxSpeed: Number,
+    name: {type:String, required: true},
+    propellers: {type: Number, required: true},
+    maxSpeed : {type: Number, required: true}
 
 });
 
-const Drone = mongoose.model('Movie', droneSchema);
-Drone
-    .save()
-    .then(newDrone => console.log(`a new drone is created: ${newDrone}!`))
-    .catch(err => console.log(`error while creating a new drone: ${err}`))
+const Drone = mongoose.model('drone', droneSchema);
+
 
 
 
