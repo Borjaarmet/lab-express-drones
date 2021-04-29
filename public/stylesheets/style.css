@@ -17,12 +17,16 @@ button{
   border-radius: 10px;
   margin-right: 10px;
 }
+button:hover{
+  box-shadow: 0 0 11px rgba(33,33,33,.2); 
+}
 .form{
   line-height: 2.5;
 }
 h2{
   text-align: center;
   font-size: xx-large;
+  text-decoration: underline;
 }
 
 .properties{
@@ -78,14 +82,26 @@ p{
 }
 .main-page{
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items:flex-end;
+  align-items:center;
   background-image: url('/images/drones.jpeg');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
   height: 100vh;
   margin: 0px;
+}
+.main-btn{
+  padding:20px;
+  margin-right: 30px;
+  border-radius: 25px;
+}
+.main-btn:hover{
+  color: #00b7ff;
+}
+.links-btn{
+
 }
 .title{
   color: whitesmoke;
